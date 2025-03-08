@@ -8,7 +8,7 @@ This mismatch occurs because LLM benchmarks often focus on high-level tasks such
 The file `application-eval-data_2025-02.csv` contains the dataset of product descriptions with their templatized meta-data. 
 
 ## The License
-The data is published under the CC BY 4.0 license. Please cite this github repository or the associated arXiv paper when using the data.
+The data is published under the CC BY 4.0 license. Please cite this github repository when using the data.
 
 ## Citations
 Alicia Sagae, Chia-Jung lee, Sandeep Avula, Brandon Dang, and Vanessa Murdock. "RAI Assessment of LLMs with Granular Application Data". Github repository: https://github.com/amazon-science/application-eval-data. 2025.

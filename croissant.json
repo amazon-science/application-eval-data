@@ -1,0 +1,222 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform"
+  },
+  "@type": "sc:Dataset",
+  "name": "application-eval-data",
+  "description": "Current methods for evaluating large language models typically focus on high-level tasks such as question answering or text generation, without targeting a particular AI application. This approach is not sufficient for evaluating LLMs for Responsible AI dimensions like fairness, since protected attributes that are highly relevant in one application may be less relevant or inaccessible in another. In this work, we construct a dataset that is driven by a real-world application: generate a plain-text product description, based on a list of product features. The dataset is parameterized by fairness attributes (identity groups) built on prior work in NLP fairness, intersected with gendered adjectives. We include product categories, including adult and restricted products (such as weapons) yielding a rich set of labels for every LLM prompt. These labels support the evaluation of quality, veracity, safety (toxicity), and fairness. We show how to use the data to identify performance gaps in LLMs, contributing a new proposal for LLM evaluation paired with a concrete resource to be used by the research community.",
+  "conformsTo": "http://mlcommons.org/croissant/1.0",
+  "citeAs": "@article{sagae2025use, title={A Use-Case Specific Dataset for Measuring Dimensions of Responsible Performance in LLM-generated Text}, author={Alicia Sagae and CJ Lee and Sandeep Avalu and Brandon Dang and Vanessa Murdock}, year={2025}, eprint={tbd}, archivePrefix={arXiv}, primaryClass={cs.CL}}",
+  "datePublished": "2025-06-17T00:00:00",
+  "license": "CC BY 4.0",
+  "url": "https://github.com/amazon-science/application-eval-data",
+  "version": "1.0.0",
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "github-repository",
+      "name": "github-repository",
+      "description": "Amazon Science repository on GitHub.",
+      "contentUrl": "https://github.com/amazon-science/application-eval-data",
+      "encodingFormat": "git+https",
+      "sha256": "main"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "csv-files",
+      "name": "csv-files",
+      "description": "CSV files are hosted on the GitHub repository.",
+      "containedIn": {
+        "@id": "github-repository"
+      },
+      "encodingFormat": "application/csv",
+      "includes": "*.csv"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "csv",
+      "name": "csv",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "csv/query",
+          "name": "query",
+          "description": "The search query to retrieve Amazon product results.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "csv-files"
+            },
+            "extract": {
+              "column": "query"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "csv/position",
+          "name": "position",
+          "description": "The ordinal ranking (0-based index) of this product in the search results for the associated query. Lower numbers indicate higher relevance (e.g., position=1 is the top-ranked result).",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileSet": {
+              "@id": "csv-files"
+            },
+            "extract": {
+              "column": "position"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "csv/asin",
+          "name": "asin",
+          "description": "The Amazon Standard Identification Number (ASIN), a unique 10-character alphanumeric identifier assigned by Amazon to each product in its catalog. Used to distinctly reference products.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "csv-files"
+            },
+            "extract": {
+              "column": "asin"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "csv/title",
+          "name": "title",
+          "description": "The title of the Amazon product page, as displayed in search results. Typically includes the product name, key attributes (e.g., brand, model, size), and may contain promotional text (e.g., 'Best Seller').",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "csv-files"
+            },
+            "extract": {
+              "column": "title"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "csv/feature_bullets",
+          "name": "feature_bullets",
+          "description": "Key product features as a JSON-formatted list of strings. Appears in the 'About this item' section on Amazon.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "csv-files"
+            },
+            "extract": {
+              "column": "feature_bullets"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "csv/description",
+          "name": "description",
+          "description": "The product description from Amazon, containing detailed information about features, specifications, and usage. Appears in the 'Product Details' section on Amazon",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "csv-files"
+            },
+            "extract": {
+              "column": "description"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "csv/adjective",
+          "name": "adjective",
+          "description": "The gendered qualifier targeted in product searches. Derived from Caliskan et al. 2022, in which gendered word lists were identified using distance in embedding space to conceptual clusters around the terms 'man' and 'woman'.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "csv-files"
+            },
+            "extract": {
+              "column": "adjective"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "csv/category",
+          "name": "category",
+          "description": "The primary product category assigned by Amazon. Represents the most specific marketplace classification for this product.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "csv-files"
+            },
+            "extract": {
+              "column": "category"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "csv/group",
+          "name": "group",
+          "description": "The identity group targeted in product search queries. Derived from the Toxigen dataset and includes attributes such as gender, race, ethnicity, age, religion, disability status, sexual orientation, and gender identity.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "csv-files"
+            },
+            "extract": {
+              "column": "group"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

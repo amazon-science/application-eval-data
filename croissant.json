@@ -71,7 +71,7 @@
       "containedIn": {
         "@id": "github-repository"
       },
-      "encodingFormat": "application/csv",
+      "encodingFormat": "text/csv",
       "includes": "*.csv"
     }
   ],

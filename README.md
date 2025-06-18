@@ -21,17 +21,29 @@ to be used by the research community.
 The file `application-eval-data_2025-06.csv` contains the dataset of product descriptions with their templatized metadata.
 
 ### Sample Use
-
+Using [`mlcroissant`](https://huggingface.co/docs/dataset-viewer/en/mlcroissant):
 ```
 import mlcroissant as mlc
 
 dataset = mlc.Dataset(jsonld="croissant.json")
 records = dataset.records(record_set="csv")
 
-for i, record in enumerate(records):
-    print(record)
-    if i > 10:
-        break
+print(next(iter(records)))
+```
+
+Using [TensorFlow datasets](https://www.tensorflow.org/datasets/format_specific_dataset_builders#croissantbuilder):
+```
+import tensorflow_datasets as tfds
+
+builder = tfds.dataset_builders.CroissantBuilder(
+    jsonld="croissant.json",
+    file_format="array_record"
+)
+builder.download_and_prepare()
+
+ds = builder.as_data_source()
+
+print(ds["default"][0])
 ```
 
 ## The License

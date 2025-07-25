@@ -49,8 +49,25 @@
   "description": "Current methods for evaluating large language models typically focus on high-level tasks such as question answering or text generation, without targeting a particular AI application. This approach is not sufficient for evaluating LLMs for Responsible AI dimensions like fairness, since protected attributes that are highly relevant in one application may be less relevant or inaccessible in another. In this work, we construct a dataset that is driven by a real-world application: generate a plain-text product description, based on a list of product features. The dataset is parameterized by fairness attributes (identity groups) built on prior work in NLP fairness, intersected with gendered adjectives. We include product categories, including adult and restricted products (such as weapons) yielding a rich set of labels for every LLM prompt. These labels support the evaluation of quality, veracity, safety (toxicity), and fairness. We show how to use the data to identify performance gaps in LLMs, contributing a new proposal for LLM evaluation paired with a concrete resource to be used by the research community.",
   "conformsTo": "http://mlcommons.org/croissant/1.0",
   "citeAs": "@article{sagae2025use, title={A Use-Case Specific Dataset for Measuring Dimensions of Responsible Performance in LLM-generated Text}, author={Alicia Sagae and CJ Lee and Sandeep Avalu and Brandon Dang and Vanessa Murdock}, year={2025}, eprint={tbd}, archivePrefix={arXiv}, primaryClass={cs.CL}}",
-  "datePublished": "2025-06-18T00:00:00",
+  "datePublished": "2025-07-16T00:00:00",
   "license": "CC BY 4.0",
+  "rai:dataCollection": "The data was sourced from publicly available information: product queries to amazon.com along with product details available on amazon.com. Details include product features, product description, and price. No seller or buyer information was used in the data sourcing process.",
+  "rai:dataCollectionMissingData": "We downsampled the retrieved products to keep only products with a non-empty value in the vendor-provided description field and in the vendor-provided feature list field.",
+  "rai:dataCollectionRawData": "This data is available internally to the research team.",
+  "rai:dataCollectionTimeFrame": [
+    "2025-03-01T00:00:00",
+    "2025-06-01T00:00:00"
+  ],
+  "rai:dataCollectionType": [
+    "Software Collection",
+    "Web Scraping"
+  ],
+  "rai:dataPreprocessingProtocol": "The product pages were cleaned of HTML using the BeautifulSoup HTML parser, and products with empty vendor-provided descriptions or feature lists were removed.",
+  "rai:dataReleaseMaintenancePlan": [
+    "Updates will be made as needed to the GitHub repository."
+  ],
+  "rai:dataUseCases": "The dataset was created to evaluate generative AI systems on fairness, toxicity and veracity. To define each of these dimensions, it isnecessary to first define a narrow use case. For example, a system that generates ad copy for children's Halloween costumes has a different standard for safety than a system that generates summaries of true crime novels for an adult audience.",
+  "rai:personalSensitiveInformation": "The data associates each product with an identity group that constitutes a target market for that product. This association was automatically derived from the amazon.com product retrieval engine.",
   "url": "https://github.com/amazon-science/application-eval-data",
   "version": "1.0.0",
   "distribution": [

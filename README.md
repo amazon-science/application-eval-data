@@ -18,7 +18,7 @@ new proposal for LLM evaluation paired with a concrete resource
 to be used by the research community.
 
 ## The Dataset 
-The file `application-eval-data_2025-06.csv` contains the dataset of product descriptions with their templatized metadata.
+The file `application-eval-data.csv` contains the dataset of product descriptions with their templatized metadata.
 
 ### Sample Use
 Using [`mlcroissant`](https://huggingface.co/docs/dataset-viewer/en/mlcroissant):

@@ -51,3 +51,5 @@ The data is published under the CC BY 4.0 license. Please cite this github repos
 
 ## Citations
 Alicia Sagae, Chia-Jung Lee, Sandeep Avula, Brandon Dang, and Vanessa Murdock. "A Use-Case Specific Dataset for Measuring Dimensions of Responsible Performance in LLM-generated Text". Github repository: https://github.com/amazon-science/application-eval-data. 2025.
+
+Alicia Sagae, Chia-Jung Lee, Sandeep Avula, Brandon Dang, and Vanessa Murdock. 2025. A Use-Case Specific Dataset for Measuring Dimensions of Responsible Performance in LLM-generated Text. In Proceedings of the 34th ACM International Conference on Information and Knowledge Management (CIKM ’25), November 10–14, 2025, Seoul, Republic of Korea. ACM, New York, NY, USA, 5 pages. https://doi.org/10.1145/3746252.3761642
